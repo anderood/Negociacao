@@ -12,16 +12,25 @@ class NegociacaoController {
     adiciona(event) {
         
         event.preventDefault();
-        let data = new Date(...this._inputData
-            .value.split('-')
-            .map(function(item, indice){
-                if(indice == 1){
-                    return item - 1;
-                }
-                return item;
-            })
+        this._listaNegociacoes.adiciona(negociacao);
+        this._limpaFormulario();
+        console.log(this._listaNegociacoes.negociacoes)
 
-        );
-        console.log(data)
     }
+
+    _criaNegociacao(){
+        return new new Negociacao(
+            DateHelper.textoParaData(this._inputData.value),
+            this._inputQuantidade.value,
+            this._inputValor.value
+        );
+    }
+    _limpaFormulario(){
+        this._inputData.value = '';
+        this._inputQuantidade.value = '1';
+        this._inputValor.value = 0.0;
+
+        this._inputData.focus();
+    }
+
 }
