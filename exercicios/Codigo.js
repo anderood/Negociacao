@@ -13,4 +13,8 @@ function exibeNoConsole(lista) {
 }
 
 
-exibeNoConsole([].concat(listaDeNomes1, listaDeNomes2));
+//exibeNoConsole([].concat(listaDeNomes1, listaDeNomes2));
+
+//Exemplo de arow function
+numeros.reduce((total,num) => total * num, 1);
+

@@ -5,7 +5,8 @@ class DateHelper{
     }
     
     static dataParaTexto(data){
-        return `${data.getDate()}, ${data.getMoth()}, ${data.getFullYear()}`
+        
+        return `${data.getDate()}, ${data.getMonth()}, ${data.getFullYear()}`;
     }
     static textoParaData(texto){
         if(!/\d{4}-\d{2}-\d{2}/.test(texto))throw new Error('Deve estar no Formato aaa-mm-dd');
@@ -13,3 +14,4 @@ class DateHelper{
     }
 
 }
+
