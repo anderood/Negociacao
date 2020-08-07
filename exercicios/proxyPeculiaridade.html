@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    /*
+        Crie um proxy a partir dessa classe, 
+        que exiba no console "Armadilha aqui" 
+        toda vez que qualquer propriedade da classe for lida.
+    */
+    class Funcionario {
+
+        constructor(email) {
+            this._email = email;
+        }
+
+        get email() {
+            return this._email;
+        }
+
+        set email(email) {
+            this._email = email;
+        }
+    }
+    
+    let funcionario = new Proxy(new Funcionario('abc@abc.com'),{
+        get(target, prop, receiver){
+            console.log(`Armadilha aqui`);
+            return Reflect.get(target, prop, receiver);
+        }
+    });
+    console.log(funcionario.email);
+   
+
+    
+
+    
+
+
+
+
+</script>
+</html>

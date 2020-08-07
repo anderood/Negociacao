@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    /*
+    Crie um proxy para este objeto, exibindo no console a mensagem "Armadilha aqui", 
+    toda vez que a propriedade email for lida.
+    
+    */
+    let funcionario = new Proxy({email: 'email@email.com'},{
+        get(target, prop, receiver){
+            console.log(`Armadilha aqui`);
+            return Reflect.get(target, prop, receiver);
+        }
+    });
+    console.log(funcionario.email);
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        Crie um proxy que exibe no console o valor 
+        da propriedade antes dela ser alterada
+        e o valor novo.
+    */
+    let funcionario = {email: 'abc@abc.com'};
+
+    let funcionarioProxy = new Proxy(funcionario, {
+        set: function(target, prop, value, receiver){
+            console.log(`Antigo ${target[prop]}, atual ${value}`);
+            return Reflect.get(target, prop, receiver);
+        }
+    });
+    funcionarioProxy.email = 'aaa@aaa.com';
+    console.log(funcionarioProxy.email);
+
+
+</script>
+</html>

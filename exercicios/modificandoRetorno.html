@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        Desta vez, imprima a mensagem "Armadilha aqui!", 
+        além disso, modifique o retorno do getter, fazendo-o retornar o email, 
+        começando e terminando com dois asteriscos. Por exemplo, se fizermos:
+    
+    */
+    let funcionario = {email: 'abc@abc.com'};
+
+    let funcionarioProxy = new Proxy(funcionario, {
+        get(target, prop, receiver){
+            console.log('Armadilha aqui');
+            return '**' + Reflect.get(target,prop,receiver)+'**';
+        }
+    });
+    console.log(funcionarioProxy.email);
+
+</script>
+</html>

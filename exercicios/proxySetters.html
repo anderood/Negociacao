@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+    Crie um proxy que exiba no console o valor da propriedade 
+    antes de ela ser alterada e o valor novo. 
+    Inclusive, exiba também o nome da propriedade que está sendo modificada.
+    */
+
+
+    class Funcionario {
+
+        constructor(email) {
+            this._email = email;
+        }
+
+        get email() {
+            return this._email;
+        }
+
+        set email(email) {
+            this._email = email;
+        }
+    }
+
+    let funcionarioProxy = new Proxy(new Funcionario('abc@abc.com'), {
+        set (target, prop, value, receiver){
+            console.log(`antigo ${target[prop]}, novo ${value} o Nome da Propriedade é ${prop}`);
+            return Reflect.set(target, prop, value, receiver);
+        }
+    });
+
+    funcionarioProxy.email = 'aaa@aaa.com';
+    console.log(funcionarioProxy.email);
+    
+    /*
+    A Mensagem no Log é exibida 2x por conta de ser um setter, 
+    O proxy ira exibir quando a propriedade _email é chamado, 
+    e quando foi modificado.
+    */
+
+</script>
+</html>
