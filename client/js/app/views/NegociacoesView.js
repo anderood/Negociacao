@@ -33,9 +33,7 @@ class NegociacoesView extends View{
             <tfoot>
                 <td colspan="3"></td>
                 <td>
-                    ${model.negociacoes.reduce(function(total, n){
-                        return total + n.volume;
-                    }, 0.0) /*Este segundo paramento, é para a inicialização da Variavel total*/}
+                    ${model.volumeTotal} /*Este segundo paramento, é para a inicialização da Variavel total*/}
                 </td>
             </tfoot>
         </table>`
